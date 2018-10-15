@@ -8,15 +8,18 @@ public class ScoreManager : MonoBehaviour {
     // Use this for initialization
     private GameObject player;
 
-    private float score = 0.0f;
+    static public float score = 0.0f;
     public Text scoreText;
 
     private int difficultyLevel = 1;
     private int maxDifficultyLevel = 10;
     private int scoreToNextLevel = 10;
 
+    private GameObject BonusArea;
+
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
+        BonusArea = GameObject.FindGameObjectWithTag("Bonus");
     }
 
     // Update is called once per frame
@@ -46,5 +49,6 @@ public class ScoreManager : MonoBehaviour {
 
         player.GetComponent<PlayerMovement>().SetSpeed(difficultyLevel * 5);
     }
+
 
 }

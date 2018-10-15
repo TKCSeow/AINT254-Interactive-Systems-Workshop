@@ -31,6 +31,22 @@ public class PlayerMovement : MonoBehaviour {
             return;
         }
 
+
+        if (ObstacleCollision.dead == true)
+        {
+            //StartCoroutine(PlayerStop());
+            ObstacleCollision.dead = false;
+
+        }
+        else
+        {
+            PlayerMove();
+        }
+
+    }
+
+    private void PlayerMove()
+    {
         moveVector = Vector3.zero;
 
         moveVector.x = Input.GetAxisRaw("Horizontal") * (speed / 2);
@@ -50,11 +66,26 @@ public class PlayerMovement : MonoBehaviour {
         moveVector.z = speed;
 
         controller.Move(moveVector * Time.deltaTime);
-        //anim.Play("Locomotion");
-
     }
 
-    public void SetSpeed(float modifier)
+    private IEnumerator PlayerStop()
+    {
+        controller.Move(Vector3.zero);
+        PlayerBounceBack();
+        yield return new WaitForSeconds(0.2f);
+        controller.Move(Vector3.zero);
+        
+        ObstacleCollision.dead = false;
+    }
+
+    private void PlayerBounceBack()
+    {
+        moveVector.z = -speed;
+        controller.Move(moveVector * Time.deltaTime);
+    }
+
+
+        public void SetSpeed(float modifier)
     {
         speed = 5 + modifier;
     }
