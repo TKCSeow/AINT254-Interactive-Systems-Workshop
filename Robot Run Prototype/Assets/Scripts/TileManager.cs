@@ -13,6 +13,7 @@ public class TileManager : MonoBehaviour {
     private int amountTilesOnScreen = 10;
 
     private List<GameObject> activeTiles;
+    private List<GameObject> Ramps;
     private float safeZone = 15.0f;
 
     private int lastPrefabIndex = 0;

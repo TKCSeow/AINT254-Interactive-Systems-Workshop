@@ -22,7 +22,8 @@ public class CameraFollow : MonoBehaviour {
 	void Update () {
         moveVector = lookAt.position + startOffset;
 
-        moveVector.x = lookAt.position.x;
+        //moveVector.x = lookAt.position.x;
+        moveVector.x = 0;
 
         moveVector.y = Mathf.Clamp(moveVector.y, 3, 5);
 

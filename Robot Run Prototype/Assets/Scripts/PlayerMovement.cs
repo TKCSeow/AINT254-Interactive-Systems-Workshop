@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-    private const float LANE_DISTANCE = 1.0f;
+    private const float LANE_DISTANCE = 2.0f;
 
     public float speed = 10.0f;
     private CharacterController controller;
@@ -64,31 +64,17 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         Vector3 targetPosition = transform.position.z * Vector3.forward;
-        if (isFirstMove == true)
-        {
-           
-            if (desiredLane == 0)
-            {
-                targetPosition += Vector3.left * LANE_DISTANCE/2;
-            }
-            else if (desiredLane == 1)
-            {
-                targetPosition += Vector3.right * LANE_DISTANCE/2;
-            }
-            isFirstMove = false;
-        }
-        else
-        {
-            
+       
+         
             if (desiredLane == 0)
             {
                 targetPosition += Vector3.left * LANE_DISTANCE;
             }
-            else if (desiredLane == 1)
+            else if (desiredLane == 2)
             {
                 targetPosition += Vector3.right * LANE_DISTANCE;
             }
-        }
+        
         //moveVector.x = Input.GetAxisRaw("Horizontal") * (speed / 2);
         moveVector = Vector3.zero;
 
@@ -127,7 +113,7 @@ public class PlayerMovement : MonoBehaviour {
         //    desiredLane++;      
         //}
         desiredLane += (isGoingRight) ? 1 : -1;
-        desiredLane = Mathf.Clamp(desiredLane, 0, 1);
+        desiredLane = Mathf.Clamp(desiredLane, 0, 2);
     }
 
     private IEnumerator PlayerStop()
