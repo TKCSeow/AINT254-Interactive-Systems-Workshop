@@ -5,10 +5,9 @@ using UnityEngine;
 public class ObstacleCollision : MonoBehaviour {
 
     // Use this for initialization
-    private GameObject player;
-    static public bool dead; 
+    private GameObject player; static public bool dead; 
 	void Start () {
-        player = GameObject.FindGameObjectWithTag("Player");
+       
         dead = false;
     }
 
@@ -24,8 +23,8 @@ public class ObstacleCollision : MonoBehaviour {
             Debug.Log("Hit");
             Debug.Log("Game Over");
 
-            dead = true;
-
+            //dead = true;
+            ScoreManager.isGameOver = true;
         }
     }
 }

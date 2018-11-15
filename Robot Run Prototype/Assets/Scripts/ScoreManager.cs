@@ -9,30 +9,32 @@ public class ScoreManager : MonoBehaviour {
     private GameObject player;
 
     static public float score = 0.0f;
+    static public bool isGameOver = false;
     public Text scoreText;
 
     private int difficultyLevel = 1;
     private int maxDifficultyLevel = 10;
-    private int scoreToNextLevel = 10;
+    private int scoreToNextLevel = 100;
 
-    private GameObject BonusArea;
+    
 
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
-        BonusArea = GameObject.FindGameObjectWithTag("Bonus");
     }
 
     // Update is called once per frame
     void Update() {
-        
 
-        if (score >= scoreToNextLevel)
+        if (isGameOver == false)
         {
-            LevelUp();
-        }
+            if (score >= scoreToNextLevel)
+            {
+                LevelUp();
+            }
 
-        score += Time.deltaTime;
-        scoreText.text = ((int)score).ToString();
+            score += (Time.deltaTime * 10);
+            scoreText.text = ((int)score).ToString();
+        }
 
     }
 

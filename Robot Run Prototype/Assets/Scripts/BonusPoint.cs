@@ -26,9 +26,9 @@ public class BonusPoint : MonoBehaviour {
     {
         if (other.CompareTag("Player"))
         {
-            ScoreManager.score += 5;
+            ScoreManager.score += 50;
         }
-        Debug.Log(other.name);
+       
 
     }
 
