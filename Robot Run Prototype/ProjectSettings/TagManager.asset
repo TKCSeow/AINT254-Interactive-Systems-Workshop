@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Bonus
   - Obstacle
+  - Song
+  - Highlight
   layers:
   - Default
   - TransparentFX

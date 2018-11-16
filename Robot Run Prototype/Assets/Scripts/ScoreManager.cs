@@ -29,10 +29,10 @@ public class ScoreManager : MonoBehaviour {
         {
             if (score >= scoreToNextLevel)
             {
-                LevelUp();
+                //LevelUp();
             }
 
-            score += (Time.deltaTime * 10);
+            //score += (Time.deltaTime * 10);
             scoreText.text = ((int)score).ToString();
         }
 

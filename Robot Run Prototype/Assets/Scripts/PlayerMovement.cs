@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour {
     private float jumpForce = 6.0f;
 
     private float animationDuration = 3.0f;
-    private bool isFirstMove = true;
+    //private bool isFirstMove = true;
     private int lanePosition;
 
     //private Animator anim;
@@ -55,59 +55,39 @@ public class PlayerMovement : MonoBehaviour {
     private void PlayerMove()
     {
         
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             desiredLane = 0;
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             desiredLane = 1;    
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.RightArrow))
         {    
             desiredLane = 2;       
         }
         if (Input.GetKeyDown(KeyCode.F))
         {    
-            desiredLane = 3;      
+            //desiredLane = 3;      
         }
 
         Vector3 targetPosition = transform.position.z * Vector3.forward;
        
          
         if (desiredLane == 0)
-            {
-            if (lanePosition == 1)
-            {
-                targetPosition += Vector3.left * LANE_DISTANCE;
-            }
-            else if (lanePosition == 2)
-            {
-                targetPosition += Vector3.left * (LANE_DISTANCE * 2);   
-            }
-            else if (lanePosition == 3)
-            {
-                targetPosition += Vector3.left * (LANE_DISTANCE * 3);    
-            }
+        { 
+                targetPosition += Vector3.left * LANE_DISTANCE;  
         }
             
             
 
 
-         else if (desiredLane == 3)
+         else if (desiredLane == 2)
          {
-            if (lanePosition == 2)
-            {
-                targetPosition += Vector3.right * LANE_DISTANCE;
-            }
-            else if (lanePosition == 1)
-            {
-                targetPosition += Vector3.right * (LANE_DISTANCE * 2);
-            }
-            else if (lanePosition == 0)
-            {
-                targetPosition += Vector3.right * (LANE_DISTANCE * 3);
-            }
+            
+            targetPosition += Vector3.right * LANE_DISTANCE;
+            
          }
 
         else if (desiredLane == 1)
@@ -120,27 +100,8 @@ public class PlayerMovement : MonoBehaviour {
             {
                 targetPosition += Vector3.left * (LANE_DISTANCE);
             }
-            else if (lanePosition == 3)
-            {
-                targetPosition += Vector3.left * (LANE_DISTANCE * 2);
-            }
         }
 
-        else if (desiredLane == 2)
-        {
-            if (lanePosition == 3)
-            {
-                targetPosition += Vector3.left * LANE_DISTANCE;
-            }
-            else if (lanePosition == 1)
-            {
-                targetPosition += Vector3.right * (LANE_DISTANCE);
-            }
-            else if (lanePosition == 0)
-            {
-                targetPosition += Vector3.right * (LANE_DISTANCE * 2);
-            }
-        }
 
 
         lanePosition = desiredLane;
@@ -148,7 +109,7 @@ public class PlayerMovement : MonoBehaviour {
         //moveVector.x = Input.GetAxisRaw("Horizontal") * (speed / 2);
         moveVector = Vector3.zero;
 
-        moveVector.x = (targetPosition - transform.position).normalized.x * (speed/1.5f);
+        moveVector.x = (targetPosition - transform.position).normalized.x * (speed * 2);
 
         // Gravity/Falling
         if (controller.isGrounded)
@@ -164,7 +125,7 @@ public class PlayerMovement : MonoBehaviour {
             verticalVelocity -= gravity * Time.deltaTime;
         }
 
-        moveVector.y = verticalVelocity;
+        moveVector.y = 0;
 
         moveVector.z = speed;
 

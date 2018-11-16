@@ -6,8 +6,8 @@ public class BonusPoint : MonoBehaviour {
 
     // Use this for initialization
     public GameObject currentInteractableObj = null;
-    
-	void Start () {
+   
+    void Start () {
         
 	}
 	
@@ -18,7 +18,7 @@ public class BonusPoint : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        
+
 
     }
 

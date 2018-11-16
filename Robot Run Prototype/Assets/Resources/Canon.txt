@@ -1,4 +1,5 @@
-Canon in D,
+Canon in D Major,
+
 4,4,
 4,4,
 4,4,
