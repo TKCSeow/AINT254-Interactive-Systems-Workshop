@@ -21,7 +21,7 @@ public class TileManager : MonoBehaviour {
     private Music song;
     public Text songTitle;
     public Text difficulty;
-    public int selectSong = 0;
+    public static int selectSong = 1;
     private int songDivisions;
 
     private int lastPrefabIndex = 0;
