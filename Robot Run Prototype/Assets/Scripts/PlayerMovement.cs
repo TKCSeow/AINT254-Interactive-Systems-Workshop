@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private const float LANE_DISTANCE = 2.0f;
 
-    public float speed = 10.0f;
+    static public float speed = 10.0f;
     private CharacterController controller;
     private Vector3 moveVector;
     private float verticalVelocity = 0.0f;
@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour {
     private int desiredLane = 1;
     private float jumpForce = 6.0f;
 
-    private float animationDuration = 3.0f;
+    private float animationDuration = 2.0f;
     //private bool isFirstMove = true;
     private int lanePosition;
 

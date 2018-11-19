@@ -18,16 +18,17 @@ public class BonusPoint : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-
+        if (other.CompareTag("Player"))
+        {
+            ScoreManager.score += 10;
+        }
+        gameObject.SetActive(false);
 
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            ScoreManager.score += 50;
-        }
+        
        
 
     }

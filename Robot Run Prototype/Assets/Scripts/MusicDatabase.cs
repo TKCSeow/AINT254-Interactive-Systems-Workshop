@@ -28,7 +28,10 @@ public class MusicDatabase: MonoBehaviour {
         string text;
         string[] splitText;
         string[] splitText2;
-        string name;
+        float speed;
+        int songDivisions;
+        int difficulty;
+        
 
         //Create temp Music
         Music temp;
@@ -51,21 +54,26 @@ public class MusicDatabase: MonoBehaviour {
         {
             //Split text by "/", which separates the song's name. Index 0 contains song's name
             splitText2 = splitText[i].Split(',');
-
+           
             //Create new string array with splitText2's length but minus one beacuse the last index will be empty 
-            string[] notes = new string[splitText2.Length - 1];
-
-            for (int j = 0; j < splitText2.Length - 1; j++)
+            string[] notes = new string[splitText2.Length - 4];
+            
+            for (int j = 0; j < notes.Length; j++)
             {
-                notes[j] = splitText2[j + 1];
+                notes[j] = splitText2[j + 4];
+             
             }
-
+            
             //notes = notes[1].Split(',');
 
             int[] note = Array.ConvertAll<string, int>(notes, int.Parse);
 
+            difficulty = int.Parse(splitText2[1]);
+            speed = float.Parse(splitText2[3]);
+            songDivisions = int.Parse(splitText2[2]);
+
             //Create new Music object with data i.e. Music(id, name, notes)
-            temp = new Music(i, splitText2[0], note);
+            temp = new Music(i, splitText2[0], difficulty, songDivisions, speed, note);
 
             print(splitText2[0]);
             print(note);

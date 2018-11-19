@@ -9,9 +9,6 @@ public class CameraFollow : MonoBehaviour {
     private Vector3 startOffset;
     private Vector3 moveVector;
 
-    private float transition = 0.0f;
-    private float animationDuration = 3.0f;
-    private Vector3 animationOffset = new Vector3(0, 4, 4);
 
 	void Start () {
         lookAt = GameObject.FindGameObjectWithTag("Player").transform;
@@ -25,17 +22,17 @@ public class CameraFollow : MonoBehaviour {
         //moveVector.x = lookAt.position.x;
         moveVector.x = 0;
 
-        moveVector.y = Mathf.Clamp(moveVector.y, 3, 5);
-
-        if (transition > 1.0f)
-        {
-            transform.position = moveVector;
-        }
-        else
-        {
-            transform.position = Vector3.Lerp(moveVector + animationOffset, moveVector, transition);
-            transition += Time.deltaTime * 1 / animationDuration;
-            transform.LookAt(lookAt.position + Vector3.up);
-        }
-	}
+        
+        transform.position = moveVector;
+        //if (transition > 1.0f)
+        //{
+        //    transform.position = moveVector;
+        //}
+        //else
+        //{
+        //    transform.position = Vector3.Lerp(moveVector + animationOffset, moveVector, transition);
+        //    transition += Time.deltaTime * 1 / animationDuration;
+        //    transform.LookAt(lookAt.position + Vector3.up);
+        //}
+    }
 }
