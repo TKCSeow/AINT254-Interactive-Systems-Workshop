@@ -251,6 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   songList:
   - {fileID: 8300000, guid: 0f99695c433c95c43b9d0cba6dd48ec8, type: 3}
+  - {fileID: 8300000, guid: cc774a4e1af641947937012c43eea33f, type: 3}
   - {fileID: 8300000, guid: ae6699ce2a184d947a5f0b18939918c4, type: 3}
 --- !u!1 &45871948
 GameObject:
@@ -632,10 +633,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 2
     m_MaxSize: 300
     m_Alignment: 5
     m_AlignByGeometry: 0
@@ -773,10 +774,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 2
     m_MaxSize: 300
     m_Alignment: 3
     m_AlignByGeometry: 0
@@ -833,7 +834,7 @@ MonoBehaviour:
   - {fileID: 1249431679112094, guid: f8c3ea19cc691d744b98fd558cd07be8, type: 2}
   songTitle: {fileID: 901093539}
   difficulty: {fileID: 1055811440}
-  selectSong: 0
+  selectSong: 1
 --- !u!4 &1110992354
 Transform:
   m_ObjectHideFlags: 0

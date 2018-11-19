@@ -41,20 +41,8 @@ public class TileManager : MonoBehaviour {
         PlayerMovement.speed = song.songSpeed;
         SpawnTile();
         songTitle.text = song.songName;
-
-        if (song.songDifficulty == 1)
-        {
-            difficulty.text = "Easy";
-        }
-        else if (song.songDifficulty == 2)
-        {
-            difficulty.text = "Normal";
-        }
-        else if (song.songDifficulty == 3)
-        {
-            difficulty.text = "Hard";
-
-        }
+        difficulty.text = "Difficulty: " + song.songDifficulty;
+        
 
     }
 
