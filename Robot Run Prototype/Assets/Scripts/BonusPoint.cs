@@ -20,7 +20,7 @@ public class BonusPoint : MonoBehaviour {
     {
         if (other.CompareTag("Player"))
         {
-            ScoreManager.score += 10;
+            ScoreManager.score += 1;
         }
         gameObject.SetActive(false);
 

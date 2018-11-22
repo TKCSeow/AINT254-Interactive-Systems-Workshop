@@ -24,7 +24,7 @@ public class ObstacleCollision : MonoBehaviour {
             Debug.Log("Game Over");
 
             //dead = true;
-            ScoreManager.isGameOver = true;
+            GameManager.isGameOver = true;
         }
     }
 }

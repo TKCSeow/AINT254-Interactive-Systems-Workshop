@@ -9,7 +9,7 @@ public class MusicDatabase: MonoBehaviour {
     private List<Music> MusicList { get; set; }
     public TextAsset MusicFile;
 
-    void Start()
+    void Awake()
     {
         if (Instance != null && Instance != this)
         {
@@ -19,7 +19,7 @@ public class MusicDatabase: MonoBehaviour {
         {
             Instance = this;
         }
-
+        DontDestroyOnLoad(gameObject);
         BuildDatabase();
     }
 
@@ -32,6 +32,7 @@ public class MusicDatabase: MonoBehaviour {
         int songDivisions;
         int difficulty;
         
+        
 
         //Create temp Music
         Music temp;
@@ -43,7 +44,7 @@ public class MusicDatabase: MonoBehaviour {
         text = MusicFile.text;
 
         //Get rid of all return carriage/new line 
-        text = text.Replace("\r", "").Replace("\n", "");
+        text = text.Replace("\r", "").Replace("\n", "").Replace("[", "").Replace("]", "");
 
         //Split text by ";", which separates the songs
         splitText = text.Split(';');
@@ -52,6 +53,9 @@ public class MusicDatabase: MonoBehaviour {
 
         for (int i = 0; i < splitText.Length - 1; i++) //for how many songs
         {
+            int noteCount = 0;
+
+
             //Split text by "/", which separates the song's name. Index 0 contains song's name
             splitText2 = splitText[i].Split(',');
            
@@ -72,11 +76,16 @@ public class MusicDatabase: MonoBehaviour {
             speed = float.Parse(splitText2[3]);
             songDivisions = int.Parse(splitText2[2]);
 
-            //Create new Music object with data i.e. Music(id, name, notes)
-            temp = new Music(i, splitText2[0], difficulty, songDivisions, speed, note);
+            foreach (int j in note)
+            {
+                if (j != 0 && j != 10)
+                    noteCount++;
+            }
 
-            print(splitText2[0]);
-            print(note);
+            //Create new Music object with data i.e. Music(id, name, notes)
+            temp = new Music(i, splitText2[0], difficulty, songDivisions, speed, note, noteCount);
+
+ 
 
 
             //Add temp to list
@@ -101,6 +110,18 @@ public class MusicDatabase: MonoBehaviour {
         }
         Debug.Log("Couldn't find item: " + id);
         return null;
+    }
+
+    public int GetSongCount()
+    {
+        // 
+        int n = 0;
+        foreach (Music temp in MusicList)
+        {
+            n++;
+        }
+        
+        return n;
     }
 
 }

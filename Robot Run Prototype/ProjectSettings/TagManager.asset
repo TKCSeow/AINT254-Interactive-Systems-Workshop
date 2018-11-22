@@ -8,6 +8,8 @@ TagManager:
   - Obstacle
   - Song
   - Highlight
+  - StartSound
+  - ScreenFader
   layers:
   - Default
   - TransparentFX

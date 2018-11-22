@@ -10,8 +10,9 @@ public class Music {
     public int songDivisions;
     public float songSpeed;
     public int[] notes;
+    public int noteCount;
 
-    public Music(int id, string name, int difficulty, int divisions, float speed, int[] n)
+    public Music(int id, string name, int difficulty, int divisions, float speed, int[] n, int nCount)
     {
         songID = id;
         songName = name;
@@ -19,5 +20,6 @@ public class Music {
         songDivisions = divisions;
         songSpeed = speed;
         notes = n;
+        noteCount = nCount;
     }
 }

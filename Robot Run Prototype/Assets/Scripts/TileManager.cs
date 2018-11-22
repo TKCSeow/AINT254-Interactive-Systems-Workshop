@@ -16,15 +16,17 @@ public class TileManager : MonoBehaviour {
     private int amountTilesOnScreen = 10;
 
     private List<GameObject> activeTiles;
-    private List<GameObject> Ramps;
-    private float safeZone = 8.0f;
-    private Music song;
+    
+    public static Music song;
     public Text songTitle;
     public Text difficulty;
+    //public static int selectSong = 1;
     public static int selectSong = 1;
     private int songDivisions;
 
     private int lastPrefabIndex = 0;
+
+
 
     void Start() {
        
@@ -68,83 +70,111 @@ public class TileManager : MonoBehaviour {
 
         for (int i = 0; i < song.notes.Length; i++)
         {
+
+            for (int j = 1; j <= 8; j++)
+            {
+                if (song.notes[i] == j)
+                {
+                    go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
+                    Spawn(go);
+                    for (int k = 1; k < j; k++)
+                    {
+                        go = Instantiate(tilePrefabs[0]) as GameObject;
+                        Spawn(go);
+                    }
+                }
+                
+
+            }
             if (song.notes[i] == 0)
             {
                 go = Instantiate(tilePrefabs[0]) as GameObject;
                 Spawn(go);
 
             }
-            else if (song.notes[i] == 1)
+            //else if (song.notes[i] == 1)
+            //{
+            //    go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
+            //    Spawn(go);
+
+            //}
+            //else if (song.notes[i] == 2)
+            //{
+            //    go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
+            //    Spawn(go);
+            //    go = Instantiate(tilePrefabs[0]) as GameObject;
+            //    Spawn(go);
+            //}
+            //else if (song.notes[i] == 3)
+            //{
+            //    go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
+            //    Spawn(go);
+            //    go = Instantiate(tilePrefabs[0]) as GameObject;
+            //    Spawn(go);
+            //    go = Instantiate(tilePrefabs[0]) as GameObject;
+            //    Spawn(go);
+            //}
+            //else if (song.notes[i] == 4)
+            //{
+            //    go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
+            //    Spawn(go);
+            //    for (int j = 1; j < 4; j++)
+            //    {
+            //        go = Instantiate(tilePrefabs[0]) as GameObject;
+            //        Spawn(go);
+            //    }
+            //}
+            //else if (song.notes[i] == 6)
+            //{
+            //    go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
+            //    Spawn(go);
+            //    for (int j = 1; j < 6; j++)
+            //    {
+            //        go = Instantiate(tilePrefabs[0]) as GameObject;
+            //        Spawn(go);
+            //    }
+            //}
+            //else if (song.notes[i] == 8)
+            //{
+            //    go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
+            //    Spawn(go);
+            //    for (int j = 1; j < 8; j++)
+            //    {
+            //        go = Instantiate(tilePrefabs[0]) as GameObject;
+            //        Spawn(go);
+            //    }
+            //}
+            if (song.notes[i] == 9)
             {
-                go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
-                Spawn(go);
+                go = Instantiate(tilePrefabsHalf[RandomPrefabIndex()]) as GameObject;
+                Spawn(go, 2);
 
             }
-            else if (song.notes[i] == 2)
+            else if (song.notes[i] == 10)
             {
-                go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
-                Spawn(go);
-                go = Instantiate(tilePrefabs[0]) as GameObject;
-                Spawn(go);
+                go = Instantiate(tilePrefabsHalf[0]) as GameObject;
+                Spawn(go, 2);
+
             }
-            else if (song.notes[i] == 3)
+            else if (song.notes[i] == 11)
             {
                 go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
                 Spawn(go);
-                go = Instantiate(tilePrefabs[0]) as GameObject;
-                Spawn(go);
-                go = Instantiate(tilePrefabs[0]) as GameObject;
-                Spawn(go);
-            }
-            else if (song.notes[i] == 4)
-            {
-                go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
-                Spawn(go);
-                for (int j = 1; j < 4; j++)
+                for (int j = 1; j < 16; j++)
                 {
                     go = Instantiate(tilePrefabs[0]) as GameObject;
                     Spawn(go);
                 }
             }
-            else if (song.notes[i] == 8)
-            {
-                go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
-                Spawn(go);
-                go = Instantiate(tilePrefabs[0]) as GameObject;
-                Spawn(go);
-                go = Instantiate(tilePrefabs[0]) as GameObject;
-                Spawn(go);
-                go = Instantiate(tilePrefabs[0]) as GameObject;
-                Spawn(go);
-                go = Instantiate(tilePrefabs[0]) as GameObject;
-                Spawn(go);
-                go = Instantiate(tilePrefabs[0]) as GameObject;
-                Spawn(go);
-                go = Instantiate(tilePrefabs[0]) as GameObject;
-                Spawn(go);
-                go = Instantiate(tilePrefabs[0]) as GameObject;
-                Spawn(go);
-            }
-            else if (song.notes[i] == 9)
-            {
-                go = Instantiate(tilePrefabsHalf[RandomPrefabIndex()]) as GameObject;
-                Spawn(go, true);
-
-            }
-            else
-            {
-                go = Instantiate(tilePrefabs[0]) as GameObject;
-            }
+            
         }
         go = Instantiate(tilePrefabs[5]) as GameObject;
         Spawn(go);
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 11; i++)
         {
             go = Instantiate(tilePrefabs[0]) as GameObject;
             Spawn(go);
         }
-
-        
     }
 
     private void Spawn(GameObject go)
@@ -155,11 +185,11 @@ public class TileManager : MonoBehaviour {
         activeTiles.Add(go);
     }
 
-    private void Spawn(GameObject go, bool d)
+    private void Spawn(GameObject go, int i)
     {
         go.transform.SetParent(transform);
         go.transform.position = Vector3.forward * spawnZ;
-        spawnZ += (tileLength / 2);
+        spawnZ += (tileLength / i);
         activeTiles.Add(go);
     }
 
@@ -184,6 +214,13 @@ public class TileManager : MonoBehaviour {
         }
 
         lastPrefabIndex = randomIndex;
+
+        for (int i = 0; i < GameManager.tileCount.Length; i++)
+        {
+            if (i + 1 == randomIndex)
+                GameManager.tileCount[i]++;
+
+        }
         return randomIndex;
     }
 
@@ -202,6 +239,13 @@ public class TileManager : MonoBehaviour {
         }
 
         lastPrefabIndex = randomIndex;
+
+        for (int i = 0; i < GameManager.tileCount.Length; i++)
+        {
+            if (GameManager.tileCount[i + 1] == randomIndex)
+                GameManager.tileCount[i]++;
+        }
+
         return randomIndex;
     }
 }

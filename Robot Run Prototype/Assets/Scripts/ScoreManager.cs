@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour {
 
     // Use this for initialization
+    public Text scoreText;
+
     private GameObject player;
 
     static public float score = 0.0f;
-    static public bool isGameOver = false;
-    public Text scoreText;
+    
+    
 
     private int difficultyLevel = 1;
     private int maxDifficultyLevel = 10;
@@ -20,25 +22,23 @@ public class ScoreManager : MonoBehaviour {
 
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
+        score = 0.0f;
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
 
-        if (isGameOver == false)
+        if (GameManager.isGameOver == false)
         {
-            if (score >= scoreToNextLevel)
-            {
-                //LevelUp();
-            }
 
-            //score += (Time.deltaTime * 10);
             scoreText.text = ((int)score).ToString();
+
+            //noteText.text = ((int)score / 10).ToString() + "/" + TileManager.song.noteCount.ToString();
+
         }
-
     }
-
-     private void LevelUp()
+    private void LevelUp()
     {
         if (difficultyLevel == maxDifficultyLevel)
         {

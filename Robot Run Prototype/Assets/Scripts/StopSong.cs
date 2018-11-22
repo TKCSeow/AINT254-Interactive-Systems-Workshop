@@ -17,5 +17,7 @@ public class StopSong: MonoBehaviour {
 
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().enabled = false;
         PlayerMovement.speed = 0;
+        GameManager.isGameOver = true;
+        EndScreen.Instance.endScreen.SetActive(true);
     }
 }

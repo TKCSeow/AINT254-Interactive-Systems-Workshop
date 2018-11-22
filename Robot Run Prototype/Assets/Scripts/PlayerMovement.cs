@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour {
     //private bool isFirstMove = true;
     private int lanePosition;
 
+    
+
     //private Animator anim;
 
     void Start()
@@ -58,14 +60,17 @@ public class PlayerMovement : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             desiredLane = 0;
+            GameManager.buttonPress[0]++;
         }
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.DownArrow))
         {
-            desiredLane = 1;    
+            desiredLane = 1;
+            GameManager.buttonPress[1]++;
         }
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.RightArrow))
         {    
-            desiredLane = 2;       
+            desiredLane = 2;
+            GameManager.buttonPress[2]++;
         }
         if (Input.GetKeyDown(KeyCode.F))
         {    
@@ -109,7 +114,7 @@ public class PlayerMovement : MonoBehaviour {
         //moveVector.x = Input.GetAxisRaw("Horizontal") * (speed / 2);
         moveVector = Vector3.zero;
 
-        moveVector.x = (targetPosition - transform.position).normalized.x * (speed * 2);
+        moveVector.x = (targetPosition - transform.position).normalized.x * (speed * 4);
 
         // Gravity/Falling
         if (controller.isGrounded)

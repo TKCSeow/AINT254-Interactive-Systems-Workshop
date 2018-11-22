@@ -4,10 +4,24 @@ using UnityEngine;
 
 public class SongList : MonoBehaviour {
 
+  
+    public static SongList Instance { get; set; }
     public AudioClip[] songList;
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+        DontDestroyOnLoad(gameObject);
+    }
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
 	}
 	
@@ -18,7 +32,6 @@ public class SongList : MonoBehaviour {
 
     public void SetSong(string songName)
     {
-        print(songName);
         GetComponent<AudioSource>().clip = songList[SearchSong(songName)];
     }
 
@@ -27,16 +40,28 @@ public class SongList : MonoBehaviour {
         int song = 1;
         for (int i = 0; i < songList.Length; i++)
         {
-            print(songList[i].name);
+
             if (songName == songList[i].name)
             {
-                song = i;                
+                song = i;
             }
         }
 
-
-
-        print(song);
         return song;
+    }
+
+    public float SearchSongForLength(string songName)
+    {
+        float songLength = 0;
+        for (int i = 0; i < songList.Length; i++)
+        {
+
+            if (songName == songList[i].name)
+            {
+                songLength = songList[i].length;
+            }
+        }
+
+        return songLength;
     }
 }
