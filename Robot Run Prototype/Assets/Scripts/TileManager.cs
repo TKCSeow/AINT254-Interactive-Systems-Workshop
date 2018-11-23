@@ -32,7 +32,7 @@ public class TileManager : MonoBehaviour {
        
         
 
-        song = MusicDatabase.Instance.GetSong(selectSong);
+        song = MusicDatabase.Instance.GetSong(selectSong,GameManager.genre);
         print(song.songName);
 
         GameObject.FindGameObjectWithTag("Song").GetComponent<SongList>().SetSong(song.songName);

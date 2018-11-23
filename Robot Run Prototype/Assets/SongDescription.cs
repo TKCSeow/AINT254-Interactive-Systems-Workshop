@@ -15,15 +15,15 @@ public class SongDescription : MonoBehaviour {
     }
 
 	void Update () {
-		for (int i = 0; i < MusicDatabase.Instance.GetSongCount(); i++)
+		for (int i = 0; i < MusicDatabase.Instance.GetSongCount(ShopScrollList.Instance.genre); i++)
         {
             if (GameManager.selectedSong == i)
             {
-                Music temp = MusicDatabase.Instance.GetSong(i);
+                Music temp = MusicDatabase.Instance.GetSong(i, ShopScrollList.Instance.genre);
                 songLength = SongList.Instance.SearchSongForLength(temp.songName);
                 
 
-                songText.text = "Name: " + temp.songName + "\n\nDifficulty: " + temp.songDifficulty + "\n\nLenth: " + FormatTime(songLength); ;
+                songText.text = "Name: " + temp.songName + "\n\nDifficulty: " + temp.songDifficulty + "\n\nLength: " + FormatTime(songLength) + "\n\n" + temp.songDescription;
             }
         }
 	}

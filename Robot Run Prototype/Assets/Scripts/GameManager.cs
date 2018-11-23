@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
     public static GameManager instance = null;
     public static int selectedSong;
+    public static int genre;
     static public bool isGameOver = false;
     static public int cameraType = 0;
 
@@ -34,7 +35,10 @@ public class GameManager : MonoBehaviour {
 
         public static void OpenSong(int i)
     {
+        print(selectedSong);
+        print(genre);
         TileManager.selectSong = selectedSong;
+        print(TileManager.selectSong);
         isGameOver = false;
         SceneManager.LoadScene("Main");
 
@@ -43,6 +47,7 @@ public class GameManager : MonoBehaviour {
     public static void SelectSong(int i)
     {
         selectedSong = i;
+        print(selectedSong);
     }
 
 public void LoadSelectMenu()

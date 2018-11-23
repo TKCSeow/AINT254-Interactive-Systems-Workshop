@@ -17,6 +17,7 @@ public class ShopScrollList : MonoBehaviour
     //These are changed from PhoneInteraction and KitchenInteraction scripts
     public string shopCategory;
     public int itemNum;
+    public int genre = 0;
 
     char Yen = '\u00A5';
 
@@ -37,12 +38,12 @@ public class ShopScrollList : MonoBehaviour
         RefreshDisplay();
     }
 
-    void RefreshDisplay()
+    public void RefreshDisplay()
     {
         //Update Money
         //Reset Buttons
         RemoveButtons();
-        AddButtons(MusicDatabase.Instance.GetSongCount());
+        AddButtons(MusicDatabase.Instance.GetSongCount(genre));
     }
 
     public void RemoveButtons()
@@ -69,9 +70,10 @@ public class ShopScrollList : MonoBehaviour
         //For No. of Items
         for (int i = 0; i <= num - 1; i++) //For No. of Items
         {
+       
             //Get Item from Database using id e.g. V1
-            Music temp = MusicDatabase.Instance.GetSong(i);
-
+            Music temp = MusicDatabase.Instance.GetSong(i,genre);
+            print(temp.songName);
             //If Kitchen is Open and item is not bought yet
 
 

@@ -18,6 +18,7 @@ public class EndScreen : MonoBehaviour {
     private float[] accuracyPerLane = new float[3];
     private float accuracyTotal = 0;
     public static EndScreen Instance { get; set; }
+    private float score = 0;
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -39,7 +40,7 @@ public class EndScreen : MonoBehaviour {
 
             CalculateGrade();
 
-            scoreText.text = "You Scored:\n" + ScoreManager.score + " out of " + TileManager.song.noteCount;
+            scoreText.text = "You Scored:\n" + ScoreManager.score + " out of " + TileManager.song.noteCount + " (" + (int)score + "%)";
 
 
             CalculateAccuracy();
@@ -58,16 +59,18 @@ public class EndScreen : MonoBehaviour {
 
     public void CalculateGrade()
     {
-        float score;
-        score = (TileManager.song.noteCount / ScoreManager.score) * 100;
-
-        if (score < 60)
+        score = 0;
+        print(TileManager.song.noteCount);
+        print(ScoreManager.score);
+        score = (ScoreManager.score / TileManager.song.noteCount) * 100;
+        print(score);
+        if (score < 70)
         {
             gradeText1.text = "You achieved a";
             gradeText2.text = "Fail";
             gradeText2.color = Color.red;
         }
-        else if (score < 75)
+        else if (score < 80)
         {
             gradeText1.text = "You achieved a";
             gradeText2.text = "Pass";

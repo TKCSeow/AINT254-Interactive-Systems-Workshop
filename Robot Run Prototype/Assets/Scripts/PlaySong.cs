@@ -14,6 +14,7 @@ public class PlaySong : MonoBehaviour {
     {
         song = GameObject.FindGameObjectWithTag("Song").GetComponent<AudioSource>();
         song.Play();
+        GameManager.isGameOver = false;
 
     }
 }
