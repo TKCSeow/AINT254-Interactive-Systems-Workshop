@@ -45,6 +45,10 @@ public class ShopScrollList : MonoBehaviour
         RemoveButtons();
         AddButtons(MusicDatabase.Instance.GetSongCount(genre));
     }
+    private void Update()
+    {
+        //genre = 0;
+    }
 
     public void RemoveButtons()
     {
@@ -70,10 +74,10 @@ public class ShopScrollList : MonoBehaviour
         //For No. of Items
         for (int i = 0; i <= num - 1; i++) //For No. of Items
         {
-       
+            print(genre);
             //Get Item from Database using id e.g. V1
             Music temp = MusicDatabase.Instance.GetSong(i,genre);
-            print(temp.songName);
+            //print(temp.songName);
             //If Kitchen is Open and item is not bought yet
 
 

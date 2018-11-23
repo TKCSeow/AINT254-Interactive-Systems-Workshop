@@ -107,8 +107,8 @@ public class MusicDatabase: MonoBehaviour {
 
     public Music GetSong(int id, int genre)
     {
-        Debug.Log(id);
-        Debug.Log(genre);
+        //Debug.Log(id);
+        //Debug.Log(genre);
         //Genre tempGenre;
         Music temp;
         foreach (Genre tempGenre in MusicList)

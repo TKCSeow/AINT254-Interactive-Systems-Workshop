@@ -139,6 +139,11 @@ public class EndScreen : MonoBehaviour {
 
                 if (accuracyTotal > 100)
                     accuracyTotal = 100;
+
+                if (ScoreManager.score < TileManager.song.noteCount)
+                {
+                    accuracyTotal = accuracyTotal * (score / 100);
+                }
             }
             else
             {

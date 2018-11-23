@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     // Use this for initialization
     public static GameManager instance = null;
     public static int selectedSong;
-    public static int genre;
+    public static int genre = 0;
     static public bool isGameOver = false;
     static public int cameraType = 0;
 
@@ -33,10 +35,16 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
     }
 
-        public static void OpenSong(int i)
+    void Start()
+    {
+        StartCoroutine(LoadStart());
+    }
+
+    public static void OpenSong(int i)
     {
         print(selectedSong);
         print(genre);
+        genre = ShopScrollList.Instance.genre;
         TileManager.selectSong = selectedSong;
         print(TileManager.selectSong);
         isGameOver = false;
@@ -50,22 +58,17 @@ public class GameManager : MonoBehaviour {
         print(selectedSong);
     }
 
-public void LoadSelectMenu()
+    private IEnumerator LoadStart()
     {
-        StartCoroutine(LoadFade());
-    }
 
-    private IEnumerator LoadFade()
-    {
-        GameObject.FindGameObjectWithTag("StartSound").GetComponent<AudioSource>().Play();
-        yield return new WaitForSeconds(0.5f);
+       
+        StartCoroutine(GameObject.FindGameObjectWithTag("ScreenFader").GetComponent<ScreenFader>().FadeToClear());
+        yield return new WaitForSeconds(2f);
         StartCoroutine(GameObject.FindGameObjectWithTag("ScreenFader").GetComponent<ScreenFader>().FadeToBlack());
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2f);
 
-        SceneManager.LoadScene("SongSelect");
-        
+        SceneManager.LoadScene("StartScreen");
+
     }
-
-
 
 }

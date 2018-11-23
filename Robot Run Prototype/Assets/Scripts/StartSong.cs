@@ -20,6 +20,7 @@ public class StartSong : MonoBehaviour {
         TileManager.selectSong = GameManager.selectedSong;
         GameManager.isGameOver = false;
         SceneManager.LoadScene("Main");
+        GameManager.genre = ShopScrollList.Instance.genre;
     }
 
     public void MainMenu()

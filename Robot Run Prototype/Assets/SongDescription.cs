@@ -23,7 +23,7 @@ public class SongDescription : MonoBehaviour {
                 songLength = SongList.Instance.SearchSongForLength(temp.songName);
                 
 
-                songText.text = "Name: " + temp.songName + "\n\nDifficulty: " + temp.songDifficulty + "\n\nLength: " + FormatTime(songLength) + "\n\n" + temp.songDescription;
+                songText.text = "Name: " + temp.songName + "\n\nGrade: " + temp.songDifficulty + "\n\nLength: " + FormatTime(songLength) + "\n\n" + temp.songDescription;
             }
         }
 	}

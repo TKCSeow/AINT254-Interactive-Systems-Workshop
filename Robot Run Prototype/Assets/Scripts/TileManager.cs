@@ -43,7 +43,7 @@ public class TileManager : MonoBehaviour {
         PlayerMovement.speed = song.songSpeed;
         SpawnTile();
         songTitle.text = song.songName;
-        difficulty.text = "Difficulty: " + song.songDifficulty;
+        difficulty.text = "Grade: " + song.songDifficulty;
         
 
     }
