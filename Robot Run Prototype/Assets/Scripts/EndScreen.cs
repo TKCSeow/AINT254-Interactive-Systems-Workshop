@@ -99,6 +99,7 @@ public class EndScreen : MonoBehaviour {
 
     public void CalculateAccuracy()
     {
+        accuracyTotal = 0;
         totalButtonPress = 0;
             foreach (int i in GameManager.buttonPress)
             {

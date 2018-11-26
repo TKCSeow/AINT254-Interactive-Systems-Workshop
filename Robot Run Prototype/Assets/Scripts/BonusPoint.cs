@@ -6,6 +6,8 @@ public class BonusPoint : MonoBehaviour {
 
     // Use this for initialization
     public GameObject currentInteractableObj = null;
+    public int lane;
+    public bool isHit = false;
    
     void Start () {
         
@@ -18,11 +20,21 @@ public class BonusPoint : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
+        //print(other.gameObject.name);
+        //print(other.gameObject.tag);
         if (other.CompareTag("Player"))
         {
-            ScoreManager.score += 1;
+            if (lane == PlayerMovement.desiredLane)
+            {
+                GameObject.FindGameObjectWithTag("Song").GetComponent<AudioSource>().volume = 1;
+                ScoreManager.score += 1;
+                ScoreManager.combo++;
+                isHit = true;
+                ScoreManager.isHit = isHit;
+                gameObject.SetActive(false);
+            }
         }
-        gameObject.SetActive(false);
+
 
     }
 

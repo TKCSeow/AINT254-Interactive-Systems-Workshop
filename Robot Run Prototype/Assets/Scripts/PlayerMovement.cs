@@ -13,12 +13,15 @@ public class PlayerMovement : MonoBehaviour {
     private Vector3 moveVector;
     private float verticalVelocity = 0.0f;
     private float gravity = 20.0f;
-    private int desiredLane = 1;
+    public static int desiredLane = 1;
     private float jumpForce = 6.0f;
 
     private float animationDuration = 2.0f;
     //private bool isFirstMove = true;
     private int lanePosition;
+    public GameObject[] laneCollider;
+
+
 
     
 
@@ -26,13 +29,18 @@ public class PlayerMovement : MonoBehaviour {
 
     void Start()
     {
+
         controller = GetComponent<CharacterController>();
+        desiredLane = 1;
         //anim = GetComponent<Animator>();
     }
     void Update()
+
     {
+
+        
         // During Opening Animation
-        if(Time.time < animationDuration)
+        if (Time.time < animationDuration)
         {
             controller.Move(Vector3.forward * speed * Time.deltaTime);
 
@@ -61,16 +69,33 @@ public class PlayerMovement : MonoBehaviour {
         {
             desiredLane = 0;
             GameManager.buttonPress[0]++;
+
+        }
+        else if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.J) || Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+
         }
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             desiredLane = 1;
             GameManager.buttonPress[1]++;
+
+        }
+        else if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.K) || Input.GetKeyUp(KeyCode.DownArrow))
+        {
+
         }
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.RightArrow))
         {    
             desiredLane = 2;
             GameManager.buttonPress[2]++;
+
+
+        }
+        else if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.L) || Input.GetKeyUp(KeyCode.RightArrow))
+        {
+
+
         }
         if (Input.GetKeyDown(KeyCode.F))
         {    
@@ -114,7 +139,7 @@ public class PlayerMovement : MonoBehaviour {
         //moveVector.x = Input.GetAxisRaw("Horizontal") * (speed / 2);
         moveVector = Vector3.zero;
 
-        moveVector.x = (targetPosition - transform.position).normalized.x * (speed * 4);
+        moveVector.x = (targetPosition - transform.position).normalized.x * (speed * 2);
 
         // Gravity/Falling
         if (controller.isGrounded)
@@ -135,6 +160,12 @@ public class PlayerMovement : MonoBehaviour {
         moveVector.z = speed;
 
         controller.Move(moveVector * Time.deltaTime);
+        LimitLaneCheckerMovement();
+    }
+
+    void SetCollider(int n)
+    {
+
     }
 
 
@@ -179,6 +210,19 @@ public class PlayerMovement : MonoBehaviour {
         {
             speed = 5 + modifier;
         }
+    }
+
+    void LimitLaneCheckerMovement()
+    {
+        //for (int i = 0; i < laneChecker.Length; i++)
+        //{
+        //    laneChecker[i].transform.position = new Vector3((i + (i * -2)), 0, player.transform.position.z);
+        //}
+
+        laneCollider[0].transform.position = new Vector3(-2, gameObject.transform.position.y - 1f, gameObject.transform.position.z);
+        laneCollider[1].transform.position = new Vector3(0, gameObject.transform.position.y - 1f, gameObject.transform.position.z);
+        laneCollider[2].transform.position = new Vector3(2, gameObject.transform.position.y - 1f, gameObject.transform.position.z);
+
     }
 
 }

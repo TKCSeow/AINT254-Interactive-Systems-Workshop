@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
     public static int selectedSong;
     public static int genre = 0;
     static public bool isGameOver = false;
-    static public int cameraType = 0;
+    static public bool isSongStarted = false;
+    static public int cameraType = 1;
 
     public static int[] buttonPress = new int[3] { 0, 0, 0 };
     public static int[] tileCount = new int[3] { 0, 0, 0 };
@@ -38,6 +39,15 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(LoadStart());
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("SongSelect");
+            GameObject.FindGameObjectWithTag("Song").GetComponent<AudioSource>().Stop();
+        }
     }
 
     public static void OpenSong(int i)

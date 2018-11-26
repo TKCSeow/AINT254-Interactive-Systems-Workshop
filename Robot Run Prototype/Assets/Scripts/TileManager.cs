@@ -21,18 +21,19 @@ public class TileManager : MonoBehaviour {
     public Text songTitle;
     public Text difficulty;
     //public static int selectSong = 1;
-    public static int selectSong = 1;
+    public static int selectSong = 3;
     private int songDivisions;
 
     private int lastPrefabIndex = 0;
+    private int genre = 1;
 
 
 
     void Start() {
-       
-        
 
-        song = MusicDatabase.Instance.GetSong(selectSong,GameManager.genre);
+        //genre = GameManager.genre;
+
+        song = MusicDatabase.Instance.GetSong(selectSong,genre);
         print(song.songName);
 
         GameObject.FindGameObjectWithTag("Song").GetComponent<SongList>().SetSong(song.songName);

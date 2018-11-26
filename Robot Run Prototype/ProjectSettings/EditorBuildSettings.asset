@@ -8,16 +8,19 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SplashScreen.unity
     guid: 6cba6890d2648e34f953beeea09800d3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/StartScreen.unity
     guid: b59664287963bf54087c17c8533aa0b1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SongSelect.unity
     guid: 206ef740d43798a48aaa552066f59b82
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main.unity
     guid: bf1c302510a07244897c95b45e5efcc9
+  - enabled: 1
+    path: Assets/Scenes/SongTester.unity
+    guid: c7c307f9190b34f47871b225ed1f15f2
   m_configObjects: {}
