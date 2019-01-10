@@ -1,6 +1,6 @@
 Canon in D Major,
 Composer: Johann Pachelbel,
-4,
+6,
 
 8,
 
@@ -76,7 +76,7 @@ Composer: Johann Pachelbel,
 
 Can Can,
 Composer: Jacques Offenbach,
-5,
+8,
 
 8,
 
@@ -152,7 +152,7 @@ Composer: Jacques Offenbach,
 
 Nocturne Op.9 No.2,
 Composer: Fredrick Chopin,
-2,
+6,
 8,
 8.5,
 

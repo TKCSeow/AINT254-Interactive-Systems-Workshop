@@ -42,7 +42,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   band: 3
   startScale: 1
-  scaleMultiplier: 5
+  scaleMultiplier: 10
   bar: {fileID: 0}
 --- !u!114 &114981202596287450
 MonoBehaviour:
